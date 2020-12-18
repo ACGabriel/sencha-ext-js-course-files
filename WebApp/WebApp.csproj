@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4E4083B7-C2A9-4A05-A56C-5C4106052159}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApp</RootNamespace>
+    <AssemblyName>WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\ext-4.2.1.883\ext-all-dev.js" />
+    <Content Include="data\Templates\CodeStarsSummitPresenterDetailPS.html" />
+    <Content Include="ExtJSGroup.html" />
+    <Content Include="ExtJS.html" />
+    <Content Include="ExtJSMVC_FINISH\app.js" />
+    <Content Include="ExtJSMVC_FINISH\app\controller\SessionController.js" />
+    <Content Include="ExtJSMVC_FINISH\app\model\Presenter.js" />
+    <Content Include="ExtJSMVC_FINISH\app\model\Session.js" />
+    <Content Include="ExtJSMVC_FINISH\app\model\SessionPresenter.js" />
+    <Content Include="ExtJSMVC_FINISH\app\store\Presenters.js" />
+    <Content Include="ExtJSMVC_FINISH\app\store\SessionPresenters.js" />
+    <Content Include="ExtJSMVC_FINISH\app\store\Sessions.js" />
+    <Content Include="ExtJSMVC_FINISH\app\view\Details.js" />
+    <Content Include="ExtJSMVC_FINISH\app\view\MainView.js" />
+    <Content Include="ExtJSMVC_FINISH\app\view\Presenters.js" />
+    <Content Include="ExtJSMVC_FINISH\app\view\SessionForm.js" />
+    <Content Include="ExtJSMVC_FINISH\app\view\Sessions.js" />
+    <Content Include="ExtJSMVC_FINISH\Content\Styles\colorbox.css" />
+    <Content Include="ExtJSMVC_FINISH\Content\Styles\images\wait.gif" />
+    <Content Include="ExtJSMVC_FINISH\Content\Styles\SessionSchedule.css" />
+    <Content Include="ExtJSMVC_FINISH\Content\Styles\site-cssc-cdn.css" />
+    <Content Include="ExtJSMVC_FINISH\Content\Styles\site-cssc-relative.css" />
+    <Content Include="ExtJSMVC_FINISH\Content\Styles\site-svcc-cdn.css" />
+    <Content Include="ExtJSMVC_FINISH\Content\Styles\site-svcc-relative.css" />
+    <Content Include="ExtJSMVC_FINISH\data\Templates\CodeStarsSummitPresenterDetail.html" />
+    <Content Include="ExtJSMVC_FINISH\data\Templates\CodeStarsSummitPresenterDetailPS.html" />
+    <Content Include="ExtJSMVC_FINISH\index.html" />
+    <Content Include="ExtJSMVC_FINISH\resources\images\add.png" />
+    <Content Include="ExtJSMVC_FINISH\resources\images\delete.png" />
+    <Content Include="ExtJSMVC_FINISH\resources\images\edit.png" />
+    <Content Include="ExtJSMVC_FINISH\resources\images\High.png" />
+    <Content Include="ExtJSMVC_FINISH\resources\images\Low.png" />
+    <Content Include="ExtJSMVC_FINISH\resources\images\Normal.png" />
+    <Content Include="ExtJSMVC_FINISH\resources\styles\app.css" />
+    <Content Include="ExtJS_cdn.html" />
+    <Content Include="ExtJS_Model.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Working\app.js" />
+    <Content Include="Working\app\controller\MainController.js" />
+    <Content Include="Working\app\controller\SessionController.js" />
+    <Content Include="Working\app\model\Presenter.js" />
+    <Content Include="Working\app\model\Session.js" />
+    <Content Include="Working\app\model\SessionLevel.js" />
+    <Content Include="Working\app\model\SessionPresenter.js" />
+    <Content Include="Working\app\store\Presenters.js" />
+    <Content Include="Working\app\store\SessionLevel.js" />
+    <Content Include="Working\app\store\SessionPresenters.js" />
+    <Content Include="Working\app\store\Sessions.js" />
+    <Content Include="Working\app\view\Details.js" />
+    <Content Include="Working\app\view\MainView.js" />
+    <Content Include="Working\app\view\Presenters.js" />
+    <Content Include="Working\app\view\SessionForm.js" />
+    <Content Include="Working\app\view\Sessions.js" />
+    <Content Include="Working\Content\Styles\colorbox.css" />
+    <Content Include="Working\Content\Styles\images\wait.gif" />
+    <Content Include="Working\Content\Styles\SessionSchedule.css" />
+    <Content Include="Working\Content\Styles\site-cssc-cdn.css" />
+    <Content Include="Working\Content\Styles\site-cssc-relative.css" />
+    <Content Include="Working\Content\Styles\site-svcc-cdn.css" />
+    <Content Include="Working\Content\Styles\site-svcc-relative.css" />
+    <Content Include="Working\data\Templates\CodeStarsSummitPresenterDetail.html" />
+    <Content Include="Working\data\Templates\CodeStarsSummitPresenterDetailPS.html" />
+    <Content Include="Working\index.html" />
+    <Content Include="Working\resources\images\add.png" />
+    <Content Include="Working\resources\images\delete.png" />
+    <Content Include="Working\resources\images\edit.png" />
+    <Content Include="Working\resources\images\High.png" />
+    <Content Include="Working\resources\images\Low.png" />
+    <Content Include="Working\resources\images\Normal.png" />
+    <Content Include="Working\resources\styles\app.css" />
+    <Content Include="Working\working.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbContext.cs" />
+    <Compile Include="Models\SessionModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="data\Ext\presenters.json" />
+    <Content Include="data\Ext\sessionlevels.json" />
+    <Content Include="data\Ext\sessionpresenters.json" />
+    <Content Include="data\Ext\sessions.json" />
+    <Content Include="ExtJSMVC_FINISH\data\Ext\presenters.json" />
+    <Content Include="ExtJSMVC_FINISH\data\Ext\sessionlevels.json" />
+    <Content Include="ExtJSMVC_FINISH\data\Ext\sessionpresenters.json" />
+    <Content Include="ExtJSMVC_FINISH\data\Ext\sessions.json" />
+    <Content Include="ExtJSMVC_FINISH\data\partner2Contact.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Working\data\Ext\presenters.json" />
+    <Content Include="Working\data\Ext\sessionlevels.json" />
+    <Content Include="Working\data\Ext\sessionpresenters.json" />
+    <Content Include="Working\data\Ext\sessions.json" />
+    <Content Include="Working\data\partner2Contact.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>15034</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:15034/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

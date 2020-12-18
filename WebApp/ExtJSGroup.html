@@ -1,0 +1,134 @@
+﻿<!--ExtJS Fundamentals Course-->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+    <link href="/Content/ext-4.2.1.883/resources/css/ext-all-neptune.css" rel="stylesheet" />
+    <script src="/Content/ext-4.2.1.883/ext-all-dev.js"></script>
+
+    <script type="text/javascript">
+
+        Ext.Loader.setConfig({
+            enabled: true
+        });
+
+        Ext.application({
+            name: 'MyApp',
+            launch: function() {
+                var sessionGridPanel = Ext.create("Ext.grid.Panel", {
+                    listeners: {
+                        select: function(rowmodel, record, index, eOpts) {
+                            alert(record.get("id"));
+                        }
+                    },
+
+                    store: {
+                        fields: [
+                            'id',
+                            { name: 'title', sortType: 'asUCText' },
+                            { name: 'approved', type: 'boolean' }
+                        ],
+                        data: [
+                            { id: 101, title: 'xxxx', approved: true },
+                            { id: 102, title: 'yyyy', approved: false },
+                            { id: 103, title: 'zzzz', approved: true, xtype: 'boolean' },
+                            { id: 104, title: 'yyyy', approved: true },
+                            { id: 105, title: 'yyyy', approved: false },
+                            { id: 106, title: 'zzzz', approved: true, xtype: 'boolean' }
+                        ],
+                        groupField: 'title',
+                        sorters: [
+                            {
+                                property: 'title'
+                            }
+                        ],
+                    },
+
+                    features: [
+                        {
+                            ftype: 'grouping',
+                            startCollapsed: true
+                        }
+                    ],
+
+
+                    columns: [
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'title',
+                            text: 'Title',
+                            flex: 1,
+                            minWidth: 150
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'id',
+                            text: 'Id'
+                        },
+                        {
+                            xtype: 'checkcolumn',
+                            dataIndex: 'approved',
+                            text: 'Approved'
+                        }
+                    ],
+
+                });
+
+                Ext.create('Ext.container.Viewport', {
+                    layout: 'fit',
+                    items: [
+                        {
+                            xtype: 'panel',
+                            resizable: false,
+                            layout: 'border',
+                            collapsed: false,
+                            items: [
+                                {
+                                    xtype: 'container',
+                                    region: 'center',
+                                    layout: {
+                                        type: 'vbox',
+                                        align: 'stretch'
+                                    },
+                                    items: [
+                                        sessionGridPanel,
+                                        {
+                                            xtype: 'splitter'
+                                        },
+                                        {
+                                            html: 'Presenters',
+                                            flex: 2
+                                        }
+                                    ]
+                                },
+                                {
+                                    html: 'Session details',
+                                    flex: 2,
+                                    region: 'east',
+                                    split: true
+                                }
+                            ]
+                        }
+                    ]
+                });
+            }
+        });
+        
+
+    </script>
+
+
+</head>
+
+
+    <body>
+        
+        <div id="MyDivId">
+            
+        </div>
+
+    </body>
+</html>

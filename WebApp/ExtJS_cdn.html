@@ -1,0 +1,40 @@
+﻿<!--ExtJS Fundamentals Course-->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+   <link href="http://cdn.sencha.io/ext/gpl/4.2.1/resources/css/ext-all-neptune.css" rel="stylesheet" />
+   <script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"></script>
+    <script type="text/javascript">
+
+        Ext.application({
+            name: 'MyApp',
+            launch: function () {
+                Ext.create('Ext.container.Viewport', {
+                    items: [
+                        {
+                            html: 'My First ExtJS Application',
+                            padding: 20
+                        }
+                    ]
+                });
+            }
+        });
+
+    </script>
+
+
+</head>
+
+
+    <body>
+        
+        <div id="MyDivId">
+            
+        </div>
+
+    </body>
+</html>

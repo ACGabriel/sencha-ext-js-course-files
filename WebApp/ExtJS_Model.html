@@ -1,0 +1,114 @@
+﻿<!--ExtJS Fundamentals Course-->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+    <link href="/Content/ext-4.2.1.883/resources/css/ext-all-neptune.css" rel="stylesheet" />
+    <script src="/Content/ext-4.2.1.883/ext-all-debug.js"></script>
+
+    
+
+    <script type="text/javascript">
+
+     
+        //Ext.define('SessionModel', {
+        //    extend: 'Ext.data.Model',
+        //    fields: ["id","title","sessionLevel","approved"]
+        //});
+
+        Ext.define('SessionModel', {
+            extend: 'Ext.data.Model',
+            fields: [
+                { name: 'id', type: 'int' },
+                { name: 'title', type: 'string' },
+                { name: 'sessionLevel', type: 'int'},
+                { name: 'approved', type: 'bool', defaultValue: false }
+            ],
+
+            validations: [
+                { type: 'length', field: 'title', min: 3 },
+                { type: 'inclusion', field: 'sessionLevel', list: [1,2,3] }
+            ],
+
+            proxy: {
+                type: 'rest',
+                url: '/api/session',
+                reader: {
+                    type: 'json'
+                }
+            },
+
+
+        });
+
+        debugger;
+        var User = Ext.ModelManager.getModel('SessionModel');
+
+        //Uses the configured RestProxy to make a GET request to /users/123
+        User.load(2, {
+            success: function (session) {
+                console.log(session); 
+            }
+        });
+
+
+        var session1 = Ext.create("SessionModel", {
+            id: 101,
+            title: 'JavaScript'
+        });
+
+        var session2 = Ext.create("SessionModel", {
+            id: 102,
+            title: 'C#',
+            //sessionLevel: 2
+        });
+
+        var errors = session2.validate();
+        if (!session2.isValid()) {
+            
+            debugger;
+            errors.each(function (rec) {
+
+                console.log(rec);
+            });
+        }
+
+
+        var session2 = Ext.create("SessionModel", {
+            id: 103,
+            title: 'Java'
+        });
+
+
+        Ext.application({
+            name: 'MyApp',
+            launch: function () {
+                Ext.create('Ext.container.Viewport', {
+                    items: [
+                        {
+                            html: 'My First ExtJS Application',
+                            padding: 20
+                        }
+                    ]
+                });
+            }
+        });
+
+
+    </script>
+
+
+</head>
+
+
+    <body>
+        
+        <div id="MyDivId">
+            
+        </div>
+
+    </body>
+</html>

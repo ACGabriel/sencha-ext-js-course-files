@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SE</title>
+
+    <link href="/Content/ext-4.2.1.883/resources/css/ext-all-neptune.css" rel="stylesheet" />
+    <script src="/Content/ext-4.2.1.883/ext-all-dev.js"></script>
+
+
+    <link rel="stylesheet" href="/Content/Styles/site-cssc-relative.css">
+
+    <script type="text/javascript">
+        Ext.Loader.setConfig({
+            enabled: true
+        });
+
+        Ext.application({
+            name: 'MyApp',
+            launch: function () {
+
+                Ext.define('SessionForm', {
+                    extend: 'Ext.window.Window',
+                    alias: 'widget.sessionform',
+                    padding: 5,
+                    width: 600,
+                    title: 'Edit Record',
+                    modal: true,
+                    bodyStyle: {
+                        'background-color': '#fff'
+                    },
+                    items: [
+                        {
+                            xtype: 'form',
+                            border: 0,
+                            bodyPadding: 10,
+                            manageHeight: false,
+                            title: '',
+                            fieldDefaults: {
+                                labelWidth: 90,
+                                margin: '0 0 10',
+                                labelAlign: 'right',
+                                anchor: '90%'
+                            },
+                            items: [
+                                {
+                                    xtype: 'textfield',
+                                    fieldLabel: 'Title',
+                                    labelAlign: 'right',
+                                    name: 'title',
+                                    allowBlank: false
+                                },
+                                {
+                                    xtype: 'checkboxfield',
+                                    fieldLabel: 'Approved',
+                                    name: 'approved',
+                                },
+                                {
+                                    xtype: 'container',
+                                    padding: '10 10 10 10',
+                                    layout: {
+                                        type: 'hbox',
+                                        align: 'middle',
+                                        pack: 'center'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'button',
+                                            handler: function (button) {
+                                                var form = button.up().up('form');
+                                                form.updateRecord();
+                                                form.up('window').destroy();
+                                            },
+                                            formBind: true,
+                                            margin: '5 5 5 5 ',
+                                            text: 'Save'
+                                        },
+                                        {
+                                            xtype: 'button',
+                                            handler: function (button) {
+                                                button.up('window').destroy();
+                                            },
+                                            margin: '5 5 5 5',
+                                            text: 'Cancel'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+
+                });
+
+
+                Ext.define("SessionGridPanel", {
+                    extend: 'Ext.grid.Panel',
+                    alias: 'widget.sessiongridpanel',
+
+                    listeners: {
+                        itemdblclick: function (gridpanel, record, item, index, e) {
+                            var formWindow = Ext.create('SessionForm');
+                            var form = formWindow.down('form');
+                            form.loadRecord(record);
+                            formWindow.show();
+                        }
+                    },
+
+                    store: {
+                        fields: [
+                            'id',
+                            { name: 'title', sortType: 'asUCText' },
+                            { name: 'approved', type: 'boolean' },
+                            {
+                                dateFormat: 'c',
+                                name: 'sessionTimeDateTime',
+                                sortType: 'asDate',
+                                type: 'date'
+                            },
+                            {
+                                convert: function(v, rec) {
+                                    var convertIt = Ext.util.Format.dateRenderer('m/d/Y g:i a'),
+                                        pretty = convertIt(rec.get("sessionTimeDateTime"));
+                                    return pretty;
+                                },
+                                name: 'sessionTimePretty',
+                                type: 'string'
+                            }
+                        ],
+                        sorters: [
+                            {
+                                property: 'title'
+                            }
+                        ],
+                        groupField: 'sessionTimeDateTime',
+                       
+                        autoSync: true,
+                        autoLoad: true,
+                        proxy: {
+                            type: 'rest',
+                            url: '/ExtJSMVC/data/Ext/sessions.json',
+                            reader: {
+                                type: 'json',
+                                root: 'data'
+                            }
+                        }
+                    },
+                    features: [
+                           {
+                               ftype: 'grouping',
+                               startCollapsed: false,
+                               groupHeaderTpl: [
+                                   '{[values.rows[0].get(\'sessionTimePretty\')]} (Session Count: {rows.length})'
+                               ]
+                           }
+                    ],
+
+                    columns: [
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'title',
+                            text: 'Title',
+                            flex: 1,
+                            minWidth: 150
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'id',
+                            text: 'Id'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 200,
+                            dataIndex: 'sessionTimePretty',
+                            text: 'Session Time'
+                        },
+                        {
+                            xtype: 'checkcolumn',
+                            dataIndex: 'approved',
+                            text: 'Approved'
+                        }
+                    ],
+
+                });
+
+                Ext.create('Ext.container.Viewport', {
+                    layout: 'fit',
+                    items: [
+                        {
+                            xtype: 'panel',
+                            resizable: false,
+                            layout: 'border',
+                            collapsed: false,
+                            items: [
+                                {
+                                    xtype: 'container',
+                                    region: 'center',
+                                    layout: {
+                                        type: 'vbox',
+                                        align: 'stretch'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'sessiongridpanel',
+                                            flex: 3
+                                        },
+                                        {
+                                            xtype: 'splitter'
+                                        },
+                                        {
+                                            html: 'Presenters',
+                                            flex: 2
+                                        }
+                                    ]
+                                },
+                                {
+                                    html: 'Session details',
+                                    flex: 2,
+                                    region: 'east',
+                                    split: true
+                                }
+                            ]
+                        }
+                    ]
+                });
+            }
+        });
+
+
+
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>
